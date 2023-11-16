@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useLayoutEffect, useMemo, useState } from 'react';
 
 import { ThemeProvider } from 'styled-components';
 
@@ -12,14 +12,29 @@ function App() {
   const [theme, setTheme] = useState('dark');
 
   const currentTheme = useMemo(() => {
-    console.log(themes[theme] || themes.dark)
-    console.log((themes[theme] || themes.dark).spacing.small)
     return themes[theme] || themes.dark;
   }, [theme]);
 
   function handleToggleTheme() {
     setTheme((prevState) => prevState === 'dark' ? 'light' : 'dark');
   }
+
+  useEffect(() => {
+    localStorage.setItem('theme', JSON.stringify(theme));
+
+    return () => {
+      console.debug('Component unmounted');
+    }
+  }, [theme]);
+
+  useLayoutEffect(() => {
+    //Execução síncrona antes do carregamento da tela
+    console.debug('useLayoutEffect executed');
+
+    return () => {
+      console.debug('Component unmounted');
+    }
+  }, [theme]);
 
   return (
     <ThemeProvider theme={currentTheme}>
