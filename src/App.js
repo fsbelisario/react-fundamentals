@@ -12,6 +12,8 @@ function App() {
   const [theme, setTheme] = useState('dark');
 
   const currentTheme = useMemo(() => {
+    console.log(themes[theme] || themes.dark)
+    console.log((themes[theme] || themes.dark).spacing.small)
     return themes[theme] || themes.dark;
   }, [theme]);
 

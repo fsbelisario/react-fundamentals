@@ -1,14 +1,14 @@
 import styled from 'styled-components';
 
 export const Container = styled.article`
-  background:  ${({ theme }) => theme.postBackgroundCoor};
+  background: ${({ theme }) => theme.postBackgroundCoor};
   display: flex;
   flex-direction: column;
-  padding: 16px;
-  border-radius: 10px;
+  padding: ${({ theme }) => theme.spacing.medium};
+  border-radius: ${({ theme }) => theme.borderRadius};
 
   h2 {
-    margin: 0 0 8px;
+    margin: 0 0 ${({ theme }) => theme.spacing.small};
   }
 
   small {
@@ -16,6 +16,6 @@ export const Container = styled.article`
   }
 
   & + article {
-    margin-top: 8px;
+    margin-top: ${({ theme }) => theme.spacing.small};
   }
 `;

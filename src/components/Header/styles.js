@@ -1,16 +1,16 @@
 import styled from 'styled-components';
 
 export const Container = styled.header`
-  background:  ${({ theme }) => theme.headerBackgroundCoor};
+  background: ${({ theme }) => theme.headerBackgroundCoor};
   height: 100px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 24px;
-  border-radius: 10px;
+  padding: 0 ${({ theme }) => theme.spacing.large};
+  border-radius: ${({ theme }) => theme.borderRadius};
 
   button {
-    font-size: 16px;
+    font-size: ${({ theme }) => theme.spacing.medium};
     cursor: pointer;
     cursor: pointer;
     background: transparent;

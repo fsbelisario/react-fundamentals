@@ -1,14 +1,14 @@
 import styled from 'styled-components';
 
 export const Container = styled.footer`
-  background:  ${({ theme }) => theme.footerBackgroundCoor};
+  background: ${({ theme }) => theme.footerBackgroundCoor};
   height: 70px;
   display: flex;
   align-items: center;
-  padding: 0 24px;
-  border-radius: 10px;
+  padding: 0 ${({ theme }) => theme.spacing.large};
+  border-radius: ${({ theme }) => theme.borderRadius};
   justify-content: space-between;
-  margin-top: 24px;
+  margin-top: ${({ theme }) => theme.spacing.large};
 
   button {
     cursor: pointer;
