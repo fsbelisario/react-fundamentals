@@ -8,8 +8,26 @@ import Layout from './components/Layout';
 
 import themes from './styles/themes';
 
+function useLocalState(key, initialValue = '') {
+  const [state, setState] = useState(() => {
+    const storedData = localStorage.getItem(key);
+
+    if (storedData) {
+      return JSON.parse(storedData);
+    }
+
+    return initialValue;
+  });
+
+  useEffect(() => {
+    localStorage.setItem(key, JSON.stringify(state));
+  }, [key.state]);
+
+  return [state, setState];
+}
+
 function App() {
-  const [theme, setTheme] = useState('dark');
+  const [theme, setTheme] = useLocalState('theme', 'dark');
 
   const currentTheme = useMemo(() => {
     return themes[theme] || themes.dark;
