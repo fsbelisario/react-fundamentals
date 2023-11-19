@@ -1,11 +1,14 @@
 import React, { useEffect } from 'react';
 
+import { BrowserRouter, Link } from 'react-router-dom';
+
 import Header from '../Header';
-import PostsList from '../PostsList';
+import Routes from '../../Routes';
 import Footer from '../Footer';
 
-export default function Layout({ selectedTheme, onToggleTheme }) {
+import { Nav } from './styles';
 
+export default function Layout({ selectedTheme, onToggleTheme }) {
   useEffect(() => {
     function handleScroll() {
       console.debug('scroll executed');
@@ -16,18 +19,25 @@ export default function Layout({ selectedTheme, onToggleTheme }) {
     return () => {
       document.removeEventListener('scroll', handleScroll);
       console.debug('Component unmounted & eventListener removed');
-    }
-  }, [])
+    };
+  }, []);
 
   return (
-    <>
+    <BrowserRouter>
       <Header
         selectedTheme={selectedTheme}
-        onToggleTheme={onToggleTheme} />
-      <PostsList />
+        onToggleTheme={onToggleTheme}
+      />
+      <Nav>
+        <Link to='/'>Home</Link>
+        <Link to='/posts'>Posts</Link>
+        <Link to='/posts/1253'>Post</Link>
+      </Nav>
+      <Routes />
       <Footer
         selectedTheme={selectedTheme}
-        onToggleTheme={onToggleTheme} />
-    </>
+        onToggleTheme={onToggleTheme}
+      />
+    </BrowserRouter>
   );
 }

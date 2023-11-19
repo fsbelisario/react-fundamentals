@@ -1,4 +1,6 @@
-import React, { useEffect, useLayoutEffect, useMemo, useState } from 'react';
+import React, {
+ useEffect, useLayoutEffect, useMemo, useState,
+} from 'react';
 
 import { ThemeProvider } from 'styled-components';
 
@@ -29,12 +31,10 @@ function useLocalState(key, initialValue = '') {
 function App() {
   const [theme, setTheme] = useLocalState('theme', 'dark');
 
-  const currentTheme = useMemo(() => {
-    return themes[theme] || themes.dark;
-  }, [theme]);
+  const currentTheme = useMemo(() => themes[theme] || themes.dark, [theme]);
 
   function handleToggleTheme() {
-    setTheme((prevState) => prevState === 'dark' ? 'light' : 'dark');
+    setTheme((prevState) => (prevState === 'dark' ? 'light' : 'dark'));
   }
 
   useEffect(() => {
@@ -42,16 +42,16 @@ function App() {
 
     return () => {
       console.debug('Component unmounted');
-    }
+    };
   }, [theme]);
 
   useLayoutEffect(() => {
-    //Execução síncrona antes do carregamento da tela
+    // Execução síncrona antes do carregamento da tela
     console.debug('useLayoutEffect executed');
 
     return () => {
       console.debug('Component unmounted');
-    }
+    };
   }, [theme]);
 
   return (
@@ -62,7 +62,7 @@ function App() {
         onToggleTheme={handleToggleTheme}
       />
     </ThemeProvider>
-  )
+  );
 }
 
 export default App;

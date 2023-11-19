@@ -7,6 +7,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'build'),
     filename: 'bundle[hash].js',
+    publicPath: '/',
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -19,7 +20,7 @@ module.exports = {
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        use: 'babel-loader'
+        use: 'babel-loader',
       },
       {
         test: /\.scss$/,
@@ -29,16 +30,17 @@ module.exports = {
           {
             loader: 'css-loader',
             options: {
-              modules: true
-            }
+              modules: true,
+            },
           },
           'sass-loader',
-        ]
+        ],
       },
-    ]
+    ],
   },
   devServer: {
-    port: 3000
+    port: 3000,
+    historyApiFallback: true,
   },
   mode: 'development',
-}
+};

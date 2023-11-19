@@ -16,10 +16,10 @@ export function ThemeProvider(props) {
     <ThemeContext.Provider
       value={{
         theme,
-        onToggleTheme: handleToggleTheme
+        onToggleTheme: handleToggleTheme,
       }}
     >
       {props.children}
     </ThemeContext.Provider>
-  )
+  );
 }
