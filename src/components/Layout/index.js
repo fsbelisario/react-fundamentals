@@ -34,10 +34,10 @@ export default function Layout({ selectedTheme, onToggleTheme }) {
         <Link to='/posts/1253'>Post</Link>
       </Nav>
       <Routes />
-      <Footer
+      {/* <Footer
         selectedTheme={selectedTheme}
         onToggleTheme={onToggleTheme}
-      />
+      /> */}
     </BrowserRouter>
   );
 }
